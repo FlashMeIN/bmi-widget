@@ -1,0 +1,164 @@
+
+$thumb-radius: 7px; // Actual size is $thumb-radius*$thumb-radius-scale
+$thumb-radius-scale: 3; // We do this to make the thumb overlay the sides of the track
+$theme-color: #009fdf;
+$theme-color-dark: #545454;
+$track-height: 5px;
+$border-radius: 3px;
+$bottom-border: 4px;
+$slider-padding: 15px;
+$rule-height: 6px;
+$rule-color: #cccccc;
+$side-control-height: 35px;
+$normal-wight-color: #00c8a4;
+
+* {
+  font-family: monospace;
+}
+
+// Some style for the wrapper
+.wrapper {
+  width: 50%;
+  margin: 3em auto;
+  padding: 100px;
+  background-color: $theme-color-dark;
+  color: white;
+
+  .user-info {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .bmi-text {
+    margin-bottom: 30px;
+    font-size: 50px;
+  }
+
+  .user-info,
+  .bmi-text {
+    color: #009fdf;
+    font-weight: bold;
+  }
+
+  .invalid-input {
+    font-size: 30px;
+  }
+}
+
+.bmi-widget_container {
+  height: 100px;
+  position: relative;
+}
+
+.bmi-widget_range-container {
+  height: 50px;
+  border-radius: 25px;
+  display: flex;
+  background: #c4c4c4;
+  position: relative;
+}
+
+.bmi-widget_range--first {
+  width: 33.33%;
+}
+
+.bmi-widget_range--second {
+  width: 33.33%;
+  background: $normal-wight-color;
+}
+
+.bmi-widget_range--third {
+  width: 33.33%;
+}
+
+input[type='range'] {
+  visibility: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  height: $slider-padding*2 + $track-height; // IE's thumb gets cut
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  background:
+    linear-gradient(90deg, $rule-color 1px, rgba(238, 238, 238, 0) 1px) repeat-x content-box,
+    linear-gradient(90deg, $rule-color 1px, rgba(238, 238, 238, 0) 1px) repeat-x content-box;
+  background-size: 25% $rule-height, calc(100% - 5px) $rule-height*2;
+  background-position: 1px 30%, 1px 20%;
+  padding: 0 $slider-padding;
+  overflow: visible;
+}
+
+
+@mixin legend-text() {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 11px;
+  color: $rule-color;
+  margin-top: - $slider-padding - $bottom-border + 1px;
+}
+
+
+/*******    The wrapper for the range input    *******/
+.range-box {
+  position: relative;
+  padding: 0;
+  margin: 0 $side-control-height;
+  overflow: visible;
+
+  .underweight {
+    @include legend-text();
+    float: left;
+    margin-left: $slider-padding - 2px;
+  }
+
+  .normal {
+    @include legend-text();
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-right: $slider-padding - 4px;
+  }
+
+  .overweight {
+    @include legend-text();
+    float: right;
+    margin-right: $slider-padding - 4px;
+  }
+}
+
+/*******    Value tooltip    *******/
+.current-value {
+  background: $theme-color;
+  border-radius: $border-radius;
+  position: absolute;
+  top: -10px;
+  padding: 12px 18px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  line-height: 22px;
+  white-space: nowrap;
+  transition: left 0.045s linear;
+
+  &:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid $theme-color;
+    margin-top: -6px;
+    margin-left: -6px;
+    bottom: -5px;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

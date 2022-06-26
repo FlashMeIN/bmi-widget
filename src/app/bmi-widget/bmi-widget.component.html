@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <ng-container *ngIf="isInputValid; then bmiUI else invalidInputUI"></ng-container>
+  <ng-template #bmiUI>
+    <div class="user-info center">
+      {{userName}}'s BMI is
+    </div>
+    <div class="bmi-text center">
+      {{bmiValue}}
+    </div>
+    <div class="range-box">
+      <input #input id="month-price" type="range" [min]="min" [max]="max"
+        [value]="bmiValue">
+      <div class="bmi-widget_container">
+
+        <div class="bmi-widget_range-container">
+          <div class="bmi-widget_range--first">
+
+          </div>
+          <div class="bmi-widget_range--second">
+
+          </div>
+          <div class="bmi-widget_range--third">
+
+          </div>
+        </div>
+      </div>
+      <div #tooltip class="current-value"><span>{{bmiValue}}</span></div>
+      <span class="underweight">Underweight</span>
+      <span class="normal">Normal</span>
+      <span class="overweight">Overweight</span>
+
+    </div>
+  </ng-template>
+  <ng-template #invalidInputUI>
+    <div class="invalid-input center">
+      Oops...!! Please provide corrected values.
+    </div>
+  </ng-template>
+</div>
