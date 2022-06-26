@@ -14,8 +14,6 @@ export class BmiWidgetComponent implements OnInit, AfterViewInit {
   @Input() min: number = 0;
   isInputValid = true;
 
-  // There's a small error due to pixel truncating in Chrome
-  subpixelCorrection = 0.4;
   constructor() { }
 
   ngOnInit(): void {
