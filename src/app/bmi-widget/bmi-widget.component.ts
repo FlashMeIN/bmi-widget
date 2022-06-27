@@ -21,7 +21,7 @@ export class BmiWidgetComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     // this.bmiValue = this.range.nativeElement.value;
-    if (this.bmiValue > this.range.nativeElement.max) {
+    if (this.bmiValue > this.max || this.bmiValue < this.min) {
       console.warn('Invalid BMI value');
       this.isInputValid = false;
       return;

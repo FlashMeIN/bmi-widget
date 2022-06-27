@@ -1,11 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { BmiWidgetComponent } from './bmi-widget/bmi-widget.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        BmiWidgetComponent
       ],
     }).compileComponents();
   });
@@ -16,16 +18,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bmi-widget-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('bmi-widget-app');
-  });
-
-  it('should render title', () => {
+  it('should render bmi widget component', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('bmi-widget-app app is running!');
+    expect(compiled.querySelector('app-bmi-widget')).toBeTruthy();
   });
 });
